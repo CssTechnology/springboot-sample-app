@@ -19,7 +19,8 @@ jobs:
           distribution: 'temurin'
 
       - name: Get Maven Build Version
-        id: get_version
-        run: |
-          echo "version=$(mvn help:evaluate -Dexpression=project.version -q -DforceStdout | tail -1)" >> $GITHUB_OUTPUT
-        shell: bash
+        id: maven-version
+        uses: ./.github/actions/get-maven-version
+
+      - name: Display Maven Build Version
+        run: echo "Maven project version is ${{ steps.maven-version.outputs.build-version }}"
