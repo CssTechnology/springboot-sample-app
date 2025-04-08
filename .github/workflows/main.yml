@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout codee
         uses: actions/checkout@v2
       - name: Set up JDK 17
         uses: actions/setup-java@v3
