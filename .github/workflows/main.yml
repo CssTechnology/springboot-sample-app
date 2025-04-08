@@ -1,7 +1,9 @@
 name: Build and Test Spring Boot App
 on:
   push:
-    branches: [dev]
+    branches: [ mster, dev ]
+  pull_request:
+    branches: [ master ]
 
 jobs:
   build:
