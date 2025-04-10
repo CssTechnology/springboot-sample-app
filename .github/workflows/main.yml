@@ -43,8 +43,8 @@ jobs:
           password: ${{ secrets.JFROG_TOKEN }}
 
       - name: Build Docker Image
-        run: |
-          docker build -t trialktyenb.jfrog.io/artifactory/springboot:${{ steps.get-version.outputs.version }} .
+        run: docker version
+          # docker build -t trialktyenb.jfrog.io/artifactory/springboot:${{ steps.get-version.outputs.version }} .
       
       - name: Push Docker Image
         run: docker version
