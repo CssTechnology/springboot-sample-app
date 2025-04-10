@@ -42,6 +42,10 @@ jobs:
           username: ${{ secrets.JFROG_USERNAME }}
           password: ${{ secrets.JFROG_TOKEN }}
 
-      - name: Build and Push Docker Image
+      - name: Build Docker Image
         run: |
-          docker buildx build --tag trialktyenb.jfrog.io/docker-repo/springbootapp:${{ steps.get-version.outputs.version }} --push .
+          docker build -t trialktyenb.jfrog.io/your-docker-repo/springboot:${{ steps.get-version.outputs.version }} .
+      
+      - name: Push Docker Image
+        run: |
+          docker push trialktyenb.jfrog.io/your-docker-repo/springboot:${{ steps.get-version.outputs.version }}
