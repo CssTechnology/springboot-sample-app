@@ -34,3 +34,19 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean package -DskipTests
+
+      - name: Login to JFrog Artifactory
+        uses: docker/login-action@v2
+        with:
+          registry: trialktyenb.jfrog.io
+          username: ${{ secrets.JFROG_USERNAME }}
+          password: ${{ secrets.JFROG_PASSWORD }
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          push: true
+          tags: |
+            trialktyenb.jfrog.io/docker-repo/myimage:${{ steps.get-version.outputs.version }}      
+        
