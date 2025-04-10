@@ -44,8 +44,8 @@ jobs:
 
       - name: Build Docker Image
         run: |
-          docker build -t trialktyenb.jfrog.io/your-docker-repo/springboot:${{ steps.get-version.outputs.version }} .
+          docker build -t trialktyenb.jfrog.io/artifactory/springboot:${{ steps.get-version.outputs.version }} .
       
       - name: Push Docker Image
         run: |
-          docker push trialktyenb.jfrog.io/your-docker-repo/springboot:${{ steps.get-version.outputs.version }}
+          docker push trialktyenb.jfrog.io/artifactory/springboot:${{ steps.get-version.outputs.version }}
