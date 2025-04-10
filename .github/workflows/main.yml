@@ -42,11 +42,6 @@ jobs:
           username: ${{ secrets.JFROG_USERNAME }}
           password: ${{ secrets.JFROG_TOKEN }}
 
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v3
-        with:
-          context: .
-          push: true
-          tags: |
-            trialktyenb.jfrog.io/docker-repo/myimage:${{ steps.get-version.outputs.version }}      
-        
+      - name: Build and Push Docker Image
+        run: |
+          docker buildx build --tag trialktyenb.jfrog.io/docker-repo/myimage:${{ steps.get-version.outputs.version }} --push .
