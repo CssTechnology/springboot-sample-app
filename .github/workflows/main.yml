@@ -44,4 +44,4 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker buildx build --tag trialktyenb.jfrog.io/docker-repo/myimage:${{ steps.get-version.outputs.version }} --push .
+          docker buildx build --tag trialktyenb.jfrog.io/docker-repo/springbootapp:${{ steps.get-version.outputs.version }} --push .
