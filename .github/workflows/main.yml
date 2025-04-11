@@ -66,4 +66,11 @@ jobs:
             org.opencontainers.image.description=${{ steps.get-description.outputs.repo-description }}
           tags: ${{ steps.prep.outputs.tag }}
 
+          
+      - name: Setup Buildx
+        uses: optum-eeps/epl-actions/setup-buildx-action@v1
+        with:
+          buildx-version: ${{ inputs.docker-buildx-version }}
+          platforms: ${{ inputs.docker-platforms }}
+
 
