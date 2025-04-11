@@ -42,10 +42,27 @@ jobs:
           username: ${{ secrets.JFROG_USERNAME }}
           password: ${{ secrets.JFROG_TOKEN }}
 
-      - name: Build Docker Image
-        run: docker version
-          # docker build -t trialktyenb.jfrog.io/artifactory/springboot:${{ steps.get-version.outputs.version }} .
-      
-      - name: Push Docker Image
-        run: VERSION=$(git rev-parse --short HEAD)
-          # docker push trialktyenb.jfrog.io/artifactory/springboot:${{ steps.get-version.outputs.version }}
+      - name: Docker metadata
+  id: docker-meta
+  uses: docker/metadata-action@v5
+  with:
+    images: "${{ inputs.docker-repository }}/${{ steps.prep.outputs.image }}"
+    labels: |
+      com.uhg.image.askid=${{ inputs.ask-id }}
+      com.uhg.image.branch=${{ github.ref }}
+      com.uhg.image.build=${{ github.run_id }}
+      com.uhg.image.buildnumber=${{ github.run_number }}
+      com.uhg.image.buildurl=${{ github.run_url }}
+      com.uhg.image.repo_id=${{ github.repository_id }}
+      com.uhg.image.workflow_name=${{ github.workflow }}
+      com.uhg.image.workflow_ref=${{ github.workflow_ref }}
+      org.opencontainers.image.source=${{ github.repository }}
+      org.opencontainers.image.revision=${{ github.sha }}
+      org.opencontainers.image.created=${{ github.event.head_commit.timestamp }}
+      org.opencontainers.image.authors=${{ github.event.head_commit.author.name }}
+      org.opencontainers.image.url=${{ github.event.head_commit.url }}
+      org.opencontainers.image.documentation=${{ github.event.head_commit.url }}
+      org.opencontainers.image.vendor=UnitedHealth Group
+      org.opencontainers.image.description=${{ steps.get-description.outputs.repo-description }}
+    tags: ${{ steps.prep.outputs.tag }}
+
