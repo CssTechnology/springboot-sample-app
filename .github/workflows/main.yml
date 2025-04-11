@@ -72,21 +72,21 @@ jobs:
         with:
           version: ${{ inputs.docker-buildx-version }}
 
-      - name: Build
-        uses: docker/build-push-action@v6
-        id: build
-        with:
-          context: ${{ inputs.docker-context }}
-          file: ${{ inputs.docker-dockerfile }}
-          tags: ${{ steps.docker-meta.outputs.tags }}
-          labels: ${{ steps.docker-meta.outputs.labels }}
-          build-args: ${{ inputs.docker-build-args }}
-          target: ${{ inputs.target }}
-          # platforms: ${{ inputs.docker-platforms }} # Multi-platform not currently supported with load: true
-          load: true
-          cache-from: ${{ inputs.docker-image-cache-from }}
-          cache-to: ${{ inputs.docker-image-cache-to }}
-          secrets: ${{ inputs.docker-build-secrets }}
+#      - name: Build
+#        uses: docker/build-push-action@v6
+#        id: build
+#        with:
+#          context: ${{ inputs.docker-context }}
+#          file: ${{ inputs.docker-dockerfile }}
+#          tags: ${{ steps.docker-meta.outputs.tags }}
+#          labels: ${{ steps.docker-meta.outputs.labels }}
+#          build-args: ${{ inputs.docker-build-args }}
+#          target: ${{ inputs.target }}
+#          # platforms: ${{ inputs.docker-platforms }} # Multi-platform not currently supported with load: true
+#          load: true
+#          cache-from: ${{ inputs.docker-image-cache-from }}
+#          cache-to: ${{ inputs.docker-image-cache-to }}
+#          secrets: ${{ inputs.docker-build-secrets }}
           
 
 
