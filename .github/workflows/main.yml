@@ -72,6 +72,11 @@ jobs:
         with:
           version: ${{ inputs.docker-buildx-version }}
 
+
+      - name: Build Docker image
+        run: docker build . --tag trialktyenb.jfrog.io/artifactory/Springbootapp:latest
+    
+
 #      - name: Build
 #        uses: docker/build-push-action@v6
 #        id: build
