@@ -74,10 +74,10 @@ jobs:
 
 
       - name: Build Docker image
-        run: docker build . --tag trialktyenb.jfrog.io/artifactory/springbootapp:latest
+        run: docker build . --tag trialktyenb.jfrog.io/artifactory/dempappsdk-pypi/springbootapp:latest
 
       - name: Push Docker image
-        run: docker push trialktyenb.jfrog.io/artifactory/springbootapp:latest
+        run: docker push trialktyenb.jfrog.io/artifactory/dempappsdk-pypi/springbootapp:latest
         
     
 
