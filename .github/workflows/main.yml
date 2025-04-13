@@ -75,6 +75,10 @@ jobs:
 
       - name: Build Docker image
         run: docker build . --tag trialktyenb.jfrog.io/artifactory/springbootapp:latest
+
+      - name: Push Docker image
+        run: docker push trialktyenb.jfrog.io/artifactory/springbootapp:latest
+        
     
 
 #      - name: Build
