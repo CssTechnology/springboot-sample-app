@@ -67,17 +67,17 @@ jobs:
           tags: ${{ steps.prep.outputs.tag }}
 
           
-      - name: Setup Buildx
-        uses: docker/setup-buildx-action@v2
-        with:
-          version: ${{ inputs.docker-buildx-version }}
+      # - name: Setup Buildx
+      #   uses: docker/setup-buildx-action@v2
+      #   with:
+      #     version: ${{ inputs.docker-buildx-version }}
 
 
-      - name: Build Docker image
-        run: docker build . --tag trialktyenb.jfrog.io/artifactory/dempappsdk-pypi/springbootapp:latest
-
-      - name: Push Docker image
-        run: docker push trialktyenb.jfrog.io/artifactory/dempappsdk-pypi/springbootapp:latest
+        # - name: Build Docker image
+        #   run: docker build . --tag trialktyenb.jfrog.io/artifactory/dempappsdk-pypi/springbootapp:latest
+  
+        # - name: Push Docker image
+        #   run: docker push trialktyenb.jfrog.io/artifactory/dempappsdk-pypi/springbootapp:latest
         
     
 
